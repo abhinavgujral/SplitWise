@@ -1,0 +1,9 @@
+com\masai\app\book_review\repository\UserRepository.class
+com\masai\app\book_review\entity\User.class
+com\masai\app\book_review\BookReviewApplication.class
+com\masai\app\book_review\controller\UserController.class
+com\masai\app\book_review\entity\FriendCircle.class
+com\masai\app\book_review\repository\FriendCircleRepository.class
+com\masai\app\book_review\controller\FriendCircleController.class
+com\masai\app\book_review\service\FriendCircleService.class
+com\masai\app\book_review\service\UserService.class
