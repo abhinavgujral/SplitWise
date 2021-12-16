@@ -115,7 +115,7 @@ public class FriendCircleService
         System.out.println("userNameid is "+userNameId);
         System.out.println("frienCircleId is "+friendCircleId);
 
-        //handle user not found exception // done
+        //handle user not found exception
          if(userRepository.findById(userNameId).isPresent())
          {
          User user = userRepository.findById(userNameId).get();
@@ -147,40 +147,41 @@ public class FriendCircleService
 
     public String modifyFriendCircleByUserId(String userNameId, String friendCircleId, Integer amount)
     {
-        //handle user not found exception //done
-        int temp=Integer.parseInt(friendCircleId);
-        if(friendCircleRepository.findById(temp).isPresent())
+        //handle user not found exception
+        //User user = userRepository.findById(userNameId).get();
+        if(userRepository.findById(userNameId).isPresent())
         {
-            List<FriendCircle> friendCircleList = friendCircleRepository.findAll();
+        List<FriendCircle> friendCircleList = friendCircleRepository.findAll();
 
-            for (FriendCircle friendCircle : friendCircleList) {
-                if ((friendCircle.getFromFriendId().equals(friendCircleId)) && (friendCircle.getToFriend().equals(userNameId))) {
-                    Integer currentAmount = friendCircle.getAmount();
+        for(FriendCircle friendCircle: friendCircleList) {
+            if ((friendCircle.getFromFriendId().equals(friendCircleId)) && (friendCircle.getToFriend().equals(userNameId))) {
+                Integer currentAmount = friendCircle.getAmount();
 
-                    if (amount > currentAmount) {
-                        String msg = "Please enter an amount less than or equal to Rs. " + currentAmount;
+                if (amount > currentAmount) {
+                    String msg = "Please enter an amount less than or equal to Rs. " + currentAmount;
+                    return msg;
+                }
+
+                if (friendCircle.getGiver()) {
+                    Integer remainingAmount = currentAmount - amount;
+                    friendCircle.setAmount(remainingAmount);
+
+                    if (remainingAmount == 0) {
+                        String msg = "Congrats! You have completely paid your part of the bill";
+                        friendCircleRepository.save(friendCircle);
                         return msg;
-                    }
-
-                    if (friendCircle.getGiver()) {
-                        Integer remainingAmount = currentAmount - amount;
-                        friendCircle.setAmount(remainingAmount);
-
-                        if (remainingAmount == 0) {
-                            String msg = "Congrats! You have completely paid your part of the bill";
-                            friendCircleRepository.save(friendCircle);
-                            return msg;
-                        } else {
-                            String msg = "Rs. " + amount + "Paid Successfully. You still have to pay Rs. " + remainingAmount;
-                            friendCircleRepository.save(friendCircle);
-                            return msg;
-                        }
+                    } else {
+                        String msg = "Rs. " + amount + "Paid Successfully. You still have to pay Rs. " + remainingAmount;
+                        friendCircleRepository.save(friendCircle);
+                        return msg;
                     }
                 }
             }
-
-            //    FriendCircle friendCircle = friendCircleRepository.findById(friendCircleId).get()
         }
+
+        }
+
+    //    FriendCircle friendCircle = friendCircleRepository.findById(friendCircleId).get();
         throw new UserNotFound("-------User Not Found---");
     }
 
