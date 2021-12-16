@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.masai.app.book_review.BookReviewApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 21.831 s - in com.masai.app.book_review.BookReviewApplicationTests
