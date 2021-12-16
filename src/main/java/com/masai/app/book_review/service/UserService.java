@@ -48,7 +48,7 @@ public class UserService
         Optional<User> user1 = userRepository.findById(user.getUserNameId());
 
         if(user1.isEmpty())
-            return "No User Found";
+            return "No User Found"; // error
 
         user1.get().setEmailAddress(user.getEmailAddress());
         user1.get().setPassWord(user.getPassWord());
@@ -71,7 +71,7 @@ public class UserService
         }
         catch (Exception ex)
         {
-            return "Delete Failed";
+            return "Delete Failed"; // error
         }
     }
 }

@@ -141,8 +141,10 @@ public class FriendCircleService
             }
         }
    //     FriendCircle friendCircle = friendCircleRepository.findById(friendCircleId).get();
+
              }
                  throw new UserNotFound("-------User Not Found---");
+
     }
 
     public String modifyFriendCircleByUserId(String userNameId, String friendCircleId, Integer amount)
@@ -182,7 +184,9 @@ public class FriendCircleService
         }
 
     //    FriendCircle friendCircle = friendCircleRepository.findById(friendCircleId).get();
+
         throw new UserNotFound("-------User Not Found---");
+
     }
 
      public String getListOfPayees(String friendId)
