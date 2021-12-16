@@ -138,7 +138,7 @@ public class FriendCircleService
         }
    //     FriendCircle friendCircle = friendCircleRepository.findById(friendCircleId).get();
 
-        return "Error"; //error
+        return "Friend Not Found"; // error
     }
 
     public String modifyFriendCircleByUserId(String userNameId, String friendCircleId, Integer amount)
@@ -180,7 +180,7 @@ public class FriendCircleService
         }
 
     //    FriendCircle friendCircle = friendCircleRepository.findById(friendCircleId).get();
-        return "Error"; //error
+        return "Transaction Unsuccessful"; // error
     }
 
      public String getListOfPayees(String friendId)
