@@ -11,10 +11,10 @@ import java.util.Date;
 
 @RestController
 @ControllerAdvice
-public class ExceptionHandler extends ResponseEntityExceptionHandler {
+public class ExcptHandler extends ResponseEntityExceptionHandler {
     public final ResponseEntity<Object> userNotFound (Exception e, WebRequest request){
         ExceptionResponse exceptionResponse= new ExceptionResponse(new Date(), e.getMessage(), request.getDescription(false));
-        return  new ResponseEntity<>(exceptionResponse, HttpStatus.ACCEPTED);
+        return  new ResponseEntity<>(exceptionResponse,HttpStatus.ACCEPTED);
     }
 
 }
