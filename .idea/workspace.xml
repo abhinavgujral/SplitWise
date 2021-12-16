@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6982dc83-61a5-4a6a-847f-fd1d9ad2956f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/book_review.iml" beforeDir="false" afterPath="$PROJECT_DIR$/book_review.iml" afterDir="false" />
-    </list>
+    <list default="true" id="6982dc83-61a5-4a6a-847f-fd1d9ad2956f" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,6 +27,17 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BookReviewApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="book_review" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.masai.app.book_review.BookReviewApplication" />
@@ -46,7 +55,7 @@
       <option name="presentableId" value="Default" />
       <updated>1639644863847</updated>
       <workItem from="1639644872045" duration="151000" />
-      <workItem from="1639645352182" duration="475000" />
+      <workItem from="1639645352182" duration="790000" />
     </task>
     <servers />
   </component>
