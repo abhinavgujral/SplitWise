@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6982dc83-61a5-4a6a-847f-fd1d9ad2956f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/DTO/FriendDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/DTO/UserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/modelmapper/ModelMapperClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_26.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_review.iml" beforeDir="false" afterPath="$PROJECT_DIR$/book_review.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/controller/FriendCircleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/controller/FriendCircleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/service/FriendCircleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/service/FriendCircleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/masai/app/book_review/service/FriendCircleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/masai/app/book_review/service/FriendCircleService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,15 +57,13 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -81,6 +87,7 @@
       <workItem from="1639644872045" duration="151000" />
       <workItem from="1639645352182" duration="3392000" />
       <workItem from="1639648887687" duration="6459000" />
+      <workItem from="1639664365864" duration="7925000" />
     </task>
     <servers />
   </component>

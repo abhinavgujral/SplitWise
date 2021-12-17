@@ -1,5 +1,6 @@
 package com.masai.app.book_review.controller;
 
+import com.masai.app.book_review.DTO.FriendDTO;
 import com.masai.app.book_review.entity.FriendCircle;
 import com.masai.app.book_review.service.FriendCircleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +15,9 @@ public class FriendCircleController
     FriendCircleService friendCircleService;
 
     @GetMapping("/friendservice/friends")
-    public List<FriendCircle> getAllFriendCircles()
+    public List<FriendDTO> getAllFriendCircles()
     {
-        List<FriendCircle> friendCircleInfo = friendCircleService.getAllFriendCircles();
+        List<FriendDTO> friendCircleInfo = friendCircleService.getAllFriendCircles();
         return friendCircleInfo;
     }
 
@@ -29,9 +30,9 @@ public class FriendCircleController
 
 
     @PostMapping("/friendservice/friends")
-    public FriendCircle addFriendCircle(@RequestBody FriendCircle fromFriendId)
+    public FriendDTO addFriendCircle(@RequestBody FriendDTO fromFriendId)
     {
-        FriendCircle fromFriendId1 = friendCircleService.addFriendCircle(fromFriendId);
+        FriendDTO fromFriendId1 = friendCircleService.addFriendCircle(fromFriendId);
         return fromFriendId1;
     }
 

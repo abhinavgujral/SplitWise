@@ -1,11 +1,16 @@
 package com.masai.app.book_review.service;
 
+import com.masai.app.book_review.DTO.UserDTO;
 import com.masai.app.book_review.entity.User;
+import com.masai.app.book_review.modelmapper.ModelMapperClass;
 import com.masai.app.book_review.repository.FriendCircleRepository;
 import com.masai.app.book_review.repository.UserRepository;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,33 +23,46 @@ public class UserService
     @Autowired
     FriendCircleRepository friendCircleRepository;
 
+    @Autowired
+    ModelMapperClass modelMapper;
 
-    public List<User> getAllUsers()
+    public List<UserDTO> getAllUsers()
     {
         List<User> userInfo = userRepository.findAll();
-        return userInfo;
+
+        List<UserDTO> alluserDTO = modelMapper.modelMapper().map(userInfo, new TypeToken<List<UserDTO>>() {}.getType());
+        return alluserDTO;
     }
 
 
-    public User getSingleUser(String userNameId)
+    public UserDTO getSingleUser(String userNameId)
     {
         Optional<User> user = userRepository.findById(userNameId);
 
-        if(user.isEmpty())
-            return new User();
+           if(user.isEmpty())
+            return new UserDTO(); //throw Exception UserNotFound**
 
-        return user.get();
+        UserDTO userDTO= new UserDTO();
+        modelMapper.modelMapper().map(user.get(),userDTO);
+
+
+        return userDTO ;
     }
 
 
-    public User addUser(User user)
+    public UserDTO addUser(User user)
     {
-        User user1 = userRepository.save(user);
-        return user1;
+        User user1 = userRepository.save(user);   // check unique email address Exception
+        UserDTO userDTO= new UserDTO();
+        modelMapper.modelMapper().map(user1,userDTO);
+
+        return userDTO;
     }
 
-    public String updateUser(User user)
+    public String updateUser(UserDTO userDTO)
     {
+        User user = new User();
+        modelMapper.modelMapper().map(userDTO,user);
         Optional<User> user1 = userRepository.findById(user.getUserNameId());
 
         if(user1.isEmpty())
