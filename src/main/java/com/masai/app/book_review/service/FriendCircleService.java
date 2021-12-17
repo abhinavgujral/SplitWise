@@ -1,10 +1,14 @@
 package com.masai.app.book_review.service;
 
+import com.masai.app.book_review.DTO.FriendDTO;
+import com.masai.app.book_review.DTO.UserDTO;
 import com.masai.app.book_review.Exception.UserNotFound;
 import com.masai.app.book_review.entity.FriendCircle;
 import com.masai.app.book_review.entity.User;
+import com.masai.app.book_review.modelmapper.ModelMapperClass;
 import com.masai.app.book_review.repository.FriendCircleRepository;
 import com.masai.app.book_review.repository.UserRepository;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,11 +25,15 @@ public class FriendCircleService
     @Autowired
     FriendCircleRepository friendCircleRepository;
 
+    @Autowired
+    ModelMapperClass modelMapper;
 
-    public List<FriendCircle> getAllFriendCircles()
+    public List<FriendDTO> getAllFriendCircles()
     {
         List<FriendCircle> friendCircleList = friendCircleRepository.findAll();
-        return friendCircleList;
+        List<FriendDTO> allfriendDTO = modelMapper.modelMapper().map(friendCircleList, new TypeToken<List<FriendDTO>>() {}.getType());
+
+        return allfriendDTO;
     }
 
 
@@ -42,10 +50,14 @@ public class FriendCircleService
     }  */
 
 
-    public FriendCircle addFriendCircle(FriendCircle fromFriend)
+    public FriendDTO addFriendCircle(FriendDTO fromFrienddto)
     {
+        FriendCircle fromFriend= new FriendCircle();
+        modelMapper.modelMapper().map(fromFrienddto,fromFriend);
         FriendCircle friendCircle = friendCircleRepository.save(fromFriend);
-        return friendCircle;
+        modelMapper.modelMapper().map(friendCircle,fromFrienddto);
+
+        return fromFrienddto;
     }
 
 
@@ -113,7 +125,7 @@ public class FriendCircleService
     public String addSingleFriendCircleForUserByIds(String userNameId, String friendCircleId)
     {
         System.out.println("userNameid is "+userNameId);
-        System.out.println("frienCircleId is "+friendCircleId);
+        System.out.println("friendCircleId is "+friendCircleId);
 
         //handle user not found exception
          if(userRepository.findById(userNameId).isPresent())

@@ -1,5 +1,6 @@
 package com.masai.app.book_review.controller;
 
+import com.masai.app.book_review.DTO.UserDTO;
 import com.masai.app.book_review.entity.User;
 import com.masai.app.book_review.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,23 +15,22 @@ public class UserController
     UserService userService;
 
     @GetMapping("/userservice/users")
-    public List<User> getAllUsers()
+    public List<UserDTO> getAllUsers()
     {
-        List<User> userInfo = userService.getAllUsers();
-        return userInfo;
+      return  userService.getAllUsers();
     }
 
     @GetMapping("/userservice/users/{id}")
-    public User getSingleUser(@PathVariable("id") String userNameId)
+    public UserDTO getSingleUser(@PathVariable("id") String userNameId)
     {
-        User user = userService.getSingleUser(userNameId);
-        return user;
+        UserDTO userDTO = userService.getSingleUser(userNameId);
+        return userDTO;
     }
 
     @PostMapping("/userservice/users")
-    public User addUser(@RequestBody User user)
+    public UserDTO addUser(@RequestBody User user)
     {
-        User user1 = userService.addUser(user);
+        UserDTO user1 = userService.addUser(user);
         return user1;
     }
 
@@ -47,9 +47,9 @@ public class UserController
 
 
     @PutMapping("userservice/users/id")
-    public String updateUser(@RequestBody User user)
+    public String updateUser(@RequestBody UserDTO userDTO)
     {
-        String user1 = userService.updateUser(user);
+        String user1 = userService.updateUser(userDTO);
         return user1;
     }
 
