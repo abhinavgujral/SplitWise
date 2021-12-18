@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6982dc83-61a5-4a6a-847f-fd1d9ad2956f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/DTO/Pair.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/Exception/DataInConsistency.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/BookReviewApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/BookReviewApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/Exception/ExcptHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/Exception/ExcptHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/controller/FriendCircleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/controller/FriendCircleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/service/FriendCircleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/service/FriendCircleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/masai/app/book_review/BookReviewApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/masai/app/book_review/BookReviewApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/masai/app/book_review/Exception/ExcptHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/masai/app/book_review/Exception/ExcptHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/masai/app/book_review/controller/FriendCircleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/masai/app/book_review/controller/FriendCircleController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/masai/app/book_review/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/masai/app/book_review/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/masai/app/book_review/service/FriendCircleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/masai/app/book_review/service/FriendCircleService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/masai/app/book_review/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/masai/app/book_review/service/UserService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,17 +48,6 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="BookReviewApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="book_review" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.masai.app.book_review.BookReviewApplication" />
@@ -89,7 +67,8 @@
       <workItem from="1639644872045" duration="151000" />
       <workItem from="1639645352182" duration="3392000" />
       <workItem from="1639648887687" duration="6459000" />
-      <workItem from="1639664365864" duration="26606000" />
+      <workItem from="1639664365864" duration="27902000" />
+      <workItem from="1639827629873" duration="1756000" />
     </task>
     <servers />
   </component>

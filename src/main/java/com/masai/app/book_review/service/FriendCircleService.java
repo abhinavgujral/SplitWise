@@ -272,14 +272,16 @@ public class FriendCircleService {
     public String addcontribution(Integer bill, Integer num, Character choice, List<Pair> pairList) {
 
         int total_contribution = 0;
-        //check correctness
+        int share = bill / num;
+
+        if (choice == 'E') {
         for (int i = 0; i < num; i++) total_contribution += pairList.get(i).getContribution();
 
         if (total_contribution != bill)
             throw new DataInConsistency("check entered data");
 
-        if (choice == 'E') {
-            int share = bill / num;
+
+
             HashMap<String, Double> ComputedMap = new HashMap<>();
             for (int i = 0; i < num; i++) {
                 String username = pairList.get(i).getUsername();
@@ -295,6 +297,27 @@ public class FriendCircleService {
 
             }
 
+        }
+        if(choice=='P'){
+            for (int i = 0; i < num; i++) total_contribution += pairList.get(i).getContribution();
+
+            if (total_contribution != 100)
+                throw new DataInConsistency("check entered data");
+
+            HashMap<String, Double> ComputedMap = new HashMap<>();
+            for (int i = 0; i < num; i++) {
+                String username = pairList.get(i).getUsername();
+                int percent_contribution = pairList.get(i).getContribution();
+                int contribution = (percent_contribution*(bill))/100;
+                ComputedMap.put(username, (double) contribution - share);
+
+            }
+            compute(ComputedMap);
+            for (String name : ComputedMap.keySet()) {
+                if (ComputedMap.get(name) != 0) {
+                    compute(ComputedMap);
+                }
+            }
         }
         return "success";
     }
