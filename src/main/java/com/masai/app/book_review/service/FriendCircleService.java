@@ -32,6 +32,10 @@ public class FriendCircleService {
 
     @Autowired
     ModelMapperClass modelMapper;
+    
+    
+    @Autowired
+    TransactionHistoryService transactionHistoryService;
 
     public List<FriendDTO> getAllFriendCircles() {
         List<FriendCircle> friendCircleList = friendCircleRepository.findAll();
@@ -175,6 +179,10 @@ public class FriendCircleService {
                     }
 
                     if (friendCircle.getGiver()) {
+                        
+                        TransactionHistory record = new TransactionHistory(null, userNameId, friendCircleId, amount, new Date());
+                        transactionHistoryService.addRecord(record);
+                        
                         Integer remainingAmount = currentAmount - amount;
                         friendCircle.setAmount(remainingAmount);
 
@@ -320,6 +328,17 @@ public class FriendCircleService {
             }
         }
         return "success";
+    }
+    
+    
+    @Transactional
+    public List<FriendCircle> getListOfPayors(String userId)
+    {
+        User user = userRepository.findById(userId).get();
+        List<FriendCircle> friendCircleList = user.getFriendList();
+        System.out.println("List of Payors: ");
+        System.out.println(friendCircleList);
+        return friendCircleList;
     }
 
 }
