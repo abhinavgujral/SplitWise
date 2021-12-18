@@ -16,5 +16,8 @@ public class ExcptHandler extends ResponseEntityExceptionHandler {
         ExceptionResponse exceptionResponse= new ExceptionResponse(new Date(), e.getMessage(), request.getDescription(false));
         return  new ResponseEntity<>(exceptionResponse,HttpStatus.ACCEPTED);
     }
-
+    public final ResponseEntity<Object> DataInConsistency (Exception e, WebRequest request){
+        ExceptionResponse exceptionResponse= new ExceptionResponse(new Date(), e.getMessage(), request.getDescription(false));
+        return  new ResponseEntity<>(exceptionResponse,HttpStatus.EXPECTATION_FAILED);
+    }
 }

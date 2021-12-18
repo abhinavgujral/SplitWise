@@ -1,11 +1,13 @@
 package com.masai.app.book_review;
 
+import com.masai.app.book_review.DTO.PairArray;
 import com.masai.app.book_review.entity.FriendCircle;
 import com.masai.app.book_review.entity.User;
 import com.masai.app.book_review.repository.FriendCircleRepository;
 import com.masai.app.book_review.repository.UserRepository;
 import com.masai.app.book_review.service.FriendCircleService;
 import com.masai.app.book_review.service.UserService;
+import javassist.compiler.ast.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -62,5 +64,12 @@ public class BookReviewApplication implements CommandLineRunner
 
 		String listPayees= friendCircleService.getListOfPayees("Rohan123");
 		System.out.println(listPayees);
+
+//		String addcontribution = friendCircleService.addcontribution(100, 5, 'E', { new Pair("A",
+//				60), new Pair("B", 20), new Pair("C", 15), new Pair("D", 5),
+//				new Pair("E", 0) });
+//	      System.out.println(addcontribution);
+
+		System.out.println(" pair array=>"+ new PairArray().getPairList());
 	}
 }
