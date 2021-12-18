@@ -1,7 +1,7 @@
 package com.masai.app.book_review.controller;
 
 import com.masai.app.book_review.DTO.FriendDTO;
-import com.masai.app.book_review.entity.FriendCircle;
+import com.masai.app.book_review.DTO.Pair;
 import com.masai.app.book_review.service.FriendCircleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -43,6 +43,13 @@ public class FriendCircleController
         String msg = friendCircleService.addSingleFriendCircleForUserByIds(userId, friendId);
         return msg;
     }
+    //Divide share
+    @PostMapping("/bill/{bill}/friends/{num}/divide/{choice}")
+    public String addcontribution(@PathVariable("bill") Integer bill, @PathVariable("num") Integer num, @PathVariable("choice") Character choice, @RequestBody List<Pair> pairArray){
+           //return " success";
+        return friendCircleService.addcontribution(bill,num,choice,pairArray);
+    }
+
 
 
     @PutMapping("/friendservice/friends/{userId}/{fcId}/{amount}")  //new method2
