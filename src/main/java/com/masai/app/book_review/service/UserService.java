@@ -49,9 +49,28 @@ public class UserService
         return userDTO ;
     }
 
+    public String verifyLogin(String userNameId, String passWord) //new
+    {
+        Optional<User> user1 = userRepository.findById(userNameId);
 
+        if(user1.isEmpty())
+            return "No User Exists"; //error
+
+        User user = user1.get();
+
+        if(user.getPassWord().equals(passWord))
+            return "Successfully Logged in";
+        else
+            return "Wrong PassWord";
+    }
+    
     public UserDTO addUser(User user)
     {
+        Optional<User> userOptional = userRepository.findById(user.getUserNameId());
+
+        if(userOptional.isPresent())
+            return new User(); // error "Error! UserName already exists. Enter other userName";
+        
         User user1 = userRepository.save(user);   // check unique email address Exception
         UserDTO userDTO= new UserDTO();
         modelMapper.modelMapper().map(user1,userDTO);
