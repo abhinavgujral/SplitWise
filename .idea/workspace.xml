@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6982dc83-61a5-4a6a-847f-fd1d9ad2956f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/entity/FriendCircle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/entity/FriendCircle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/Splitwise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/Splitwise.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/controller/FriendCircleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/controller/FriendCircleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/service/FriendCircleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/masai/app/book_review/service/FriendCircleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/masai/app/book_review/Splitwise.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/masai/app/book_review/Splitwise.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/masai/app/book_review/controller/FriendCircleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/masai/app/book_review/controller/FriendCircleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/masai/app/book_review/service/FriendCircleService$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/masai/app/book_review/service/FriendCircleService$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/masai/app/book_review/service/FriendCircleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/masai/app/book_review/service/FriendCircleService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +86,7 @@
       <workItem from="1639648887687" duration="6459000" />
       <workItem from="1639664365864" duration="27902000" />
       <workItem from="1639827629873" duration="7524000" />
-      <workItem from="1639841838143" duration="7436000" />
+      <workItem from="1639841838143" duration="14366000" />
     </task>
     <servers />
   </component>

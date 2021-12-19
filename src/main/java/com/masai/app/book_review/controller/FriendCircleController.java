@@ -31,7 +31,7 @@ public class FriendCircleController
 
 
     @PostMapping("/friendservice/friends")
-    public FriendCircle addFriendCircle(@RequestBody FriendDTO fromFriendId)
+    public FriendCircle addFriendCircle(@RequestBody FriendCircle fromFriendId)
     {
         FriendCircle friendCirclei = friendCircleService.addFriendCircle(fromFriendId);
         return friendCirclei;
@@ -46,9 +46,9 @@ public class FriendCircleController
     }
     //Divide share
     @PostMapping("user/{username}/bill/{bill}/friends/{num}/divide/{choice}")
-    public String addcontribution(@PathVariable("username") String username, @PathVariable("bill") Integer bill, @PathVariable("num") Integer num, @PathVariable("choice") Character choice, @RequestBody List<Pair> pairArray){
-           //return " success";
-        return friendCircleService.addcontribution(username,bill,num,choice,pairArray);
+    public String addcontribution( @PathVariable("bill") Integer bill, @PathVariable("num") Integer num, @PathVariable("choice") Character choice, @RequestBody List<Pair> pairArray){
+          // return " success";
+        return friendCircleService.addcontribution(bill,num,choice,pairArray);
     }
 
 

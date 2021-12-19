@@ -32,7 +32,9 @@ public class FriendCircleService {
 
     @Autowired
     ModelMapperClass modelMapper;
-    
+
+    @Autowired
+    FriendCircleService friendCircleService;
     
     @Autowired
     TransactionHistoryService transactionHistoryService;
@@ -270,10 +272,9 @@ public class FriendCircleService {
 
     }
 
-         Integer friendCircleId=0;
-    public String compute(String username,HashMap<String, Integer> ComputedMap) {
-        String str = "";
 
+    public String compute(HashMap<String, Integer> ComputedMap) {
+       String str="";
         for (String name : ComputedMap.keySet()) {
             Integer p1amount = ComputedMap.get(name);
             if (p1amount > 0) {
@@ -281,53 +282,51 @@ public class FriendCircleService {
                     Integer p2amount = ComputedMap.get(tmpName);
                     if (!tmpName.equals(name) && p2amount < 0) {
                         Integer result = p1amount + p2amount;
-                        ComputedMap.put(name,0);
+                        ComputedMap.put(name, 0);
                         ComputedMap.put(tmpName, result);
+
                         System.out.println(tmpName + "=>" + p1amount + "=>" + name);
-                        str += tmpName + "=>" + p1amount + "=>" + name + "\n ";
-                        //tmpName = giver
-                        //name = taker
-                        if(tmpName==username||name==username) {
-                            User user=userRepository.findById(username).get();
-                            FriendCircle friendCircle = new FriendCircle(++friendCircleId, tmpName, name, true, true, p1amount, user);
+                        str+=tmpName + " has to pay " + p1amount + " to " + name+"\n";
+                        if(userRepository.findById(name).isPresent())
+                        {
+                            System.out.println("I am here!");
+                            FriendCircle friendCircle = new FriendCircle(null, tmpName, name, true, false, p1amount, null);
+                            friendCircleService.addFriendCircle(friendCircle);
                         }
-                        FriendCircle friendCircle = new FriendCircle(++friendCircleId, tmpName, name, true, true, p1amount, null);
-
-
-
-                      }
                         break;
                     }
 
                 }
             }
-        
+
+        }
         return str;
     }
 
-    public String addcontribution(String username,Integer bill, Integer num, Character choice, List<Pair> pairList) {
-
+    public String addcontribution(Integer bill, Integer num, Character choice, List<Pair> pairList) {
+String str="";
         int total_contribution = 0;
         int share = bill / num;
-        String str="";
-        if (choice == 'E') {
+        //check correctness
         for (int i = 0; i < num; i++) total_contribution += pairList.get(i).getContribution();
 
         if (total_contribution != bill)
             throw new DataInConsistency("check entered data");
 
+        if (choice == 'E') {
 
             HashMap<String, Integer> ComputedMap = new HashMap<>();
             for (int i = 0; i < num; i++) {
-                String name = pairList.get(i).getUsername();
+                String username = pairList.get(i).getUsername();
                 int contribution = pairList.get(i).getContribution();
-                    ComputedMap.put(name,  contribution - share);
+                ComputedMap.put(username, (Integer) contribution - share);
             }
-            compute(username,ComputedMap);
+            str+=compute(ComputedMap);
             for (String name : ComputedMap.keySet()) {
                 if (ComputedMap.get(name) != 0) {
-                  str=  compute(username,ComputedMap);
+                   str+= compute(ComputedMap);
                 }
+
 
             }
 
@@ -340,20 +339,25 @@ public class FriendCircleService {
 
             HashMap<String, Integer> ComputedMap = new HashMap<>();
             for (int i = 0; i < num; i++) {
-                String name = pairList.get(i).getUsername();
+                String username = pairList.get(i).getUsername();
                 int percent_contribution = pairList.get(i).getContribution();
                 int contribution = (percent_contribution*(bill))/100;
-                ComputedMap.put(name, (Integer) contribution - share);
+                ComputedMap.put(username, (Integer) contribution - share);
+
             }
-           str= compute(username,ComputedMap);
+            compute(ComputedMap);
             for (String name : ComputedMap.keySet()) {
                 if (ComputedMap.get(name) != 0) {
-                   str= compute(username,ComputedMap);
+                    compute(ComputedMap);
                 }
             }
         }
+
+
         return str;
     }
+
+
     
     
     @Transactional
