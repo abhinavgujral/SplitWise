@@ -44,10 +44,10 @@ public class Splitwise implements CommandLineRunner
 		User user1 = new User("Rahul123", "Rahul", "Rahul@xyz.com", "Pass@1234", null);
 		User user2 = new User("Bagul123", "Bagul", "Rahul@xyz.com", "Pass@1234", null);
 
-		FriendCircle friendCircle1 = new FriendCircle(null, "Rohan123", "Rahul123", true, true, 100, null);
-		FriendCircle friendCircle3 = new FriendCircle(null, "Rohit123", "Rahul123", true, true, 1000, null);
-		FriendCircle friendCircle2 = new FriendCircle(null, "Rohan123", "Bagul123", true, true, 200, null);
-		FriendCircle friendCircle4 = new FriendCircle(null, "Rahul123", "Bagul123", true, true, 5000, null);
+		FriendCircle friendCircle1 = new FriendCircle(null, "Rohan123", "Rahul123", true, false, 100, null);
+		FriendCircle friendCircle3 = new FriendCircle(null, "Rohit123", "Rahul123", true, false, 1000, null);
+		FriendCircle friendCircle2 = new FriendCircle(null, "Rohan123", "Bagul123", true, false, 200, null);
+		FriendCircle friendCircle4 = new FriendCircle(null, "Rahul123", "Bagul123", true, false, 5000, null);
 
 		userService.addUser(user1);
 		userService.addUser(user2);
