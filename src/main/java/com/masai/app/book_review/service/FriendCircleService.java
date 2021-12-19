@@ -276,6 +276,7 @@ public class FriendCircleService {
                       {
                         User user=userRepository.findById(username).get();
                           //friendCircleService.addSingleFriendCircleForUserByIds("Rahul123","Rohan123");
+                          friendCircle.setUser(user);
 
                       }
                         break;
