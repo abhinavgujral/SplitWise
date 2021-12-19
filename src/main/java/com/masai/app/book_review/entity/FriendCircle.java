@@ -24,7 +24,7 @@ public class FriendCircle
     String fromFriendId;
     String toFriend;
     Boolean giver;
-    Boolean taker; //this will never be required
+    Boolean taker; //useless
     Integer amount;
 
     @ManyToOne

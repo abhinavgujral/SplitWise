@@ -69,7 +69,7 @@ public class UserService
         Optional<User> userOptional = userRepository.findById(user.getUserNameId());
 
         if(userOptional.isPresent())
-            return new User(); // error "Error! UserName already exists. Enter other userName";
+            return new UserDTO(); // error "Error! UserName already exists. Enter other userName";
         
         User user1 = userRepository.save(user);   // check unique email address Exception
         UserDTO userDTO= new UserDTO();

@@ -7,6 +7,7 @@ import com.masai.app.book_review.DTO.UserDTO;
 import com.masai.app.book_review.Exception.DataInConsistency;
 import com.masai.app.book_review.Exception.UserNotFound;
 import com.masai.app.book_review.entity.FriendCircle;
+import com.masai.app.book_review.entity.TransactionHistory;
 import com.masai.app.book_review.entity.User;
 import com.masai.app.book_review.modelmapper.ModelMapperClass;
 import com.masai.app.book_review.repository.FriendCircleRepository;
@@ -17,10 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class FriendCircleService {
@@ -29,6 +27,8 @@ public class FriendCircleService {
 
     @Autowired
     FriendCircleRepository friendCircleRepository;
+    @Autowired
+    UserService userService;
 
     @Autowired
     ModelMapperClass modelMapper;
@@ -244,44 +244,54 @@ public class FriendCircleService {
 
     @Transactional
     public void test() {
-        System.out.println("In test : ");
+   //     System.out.println("In test : ");
 
-        System.out.println("For Rahul =>");
+    //    System.out.println("For Rahul =>");
         System.out.println(userRepository.findById("Rahul123").get().getFriendList());
 
-        System.out.println("For Bagul =>");
+   //     System.out.println("For Bagul =>");
         System.out.println(userRepository.findById("Bagul123").get().getFriendList());
 
     }
 
+         Integer friendCircleId=0;
+    public String compute(String username,HashMap<String, Integer> ComputedMap) {
+        String str = "";
 
-    public void compute(HashMap<String, Double> ComputedMap) {
         for (String name : ComputedMap.keySet()) {
-            Double p1amount = ComputedMap.get(name);
+            Integer p1amount = ComputedMap.get(name);
             if (p1amount > 0) {
                 for (String tmpName : ComputedMap.keySet()) {
-                    double p2amount = ComputedMap.get(tmpName);
+                    Integer p2amount = ComputedMap.get(tmpName);
                     if (!tmpName.equals(name) && p2amount < 0) {
-                        double result = p1amount + p2amount;
-                        ComputedMap.put(name, 0D);
+                        Integer result = p1amount + p2amount;
+                        ComputedMap.put(name,0);
                         ComputedMap.put(tmpName, result);
-
                         System.out.println(tmpName + "=>" + p1amount + "=>" + name);
+                        str += tmpName + "=>" + p1amount + "=>" + name + "\n ";
+                        //tmpName = giver
+                        //name = taker
+                        FriendCircle friendCircle = new FriendCircle(++friendCircleId, tmpName, name, true, true,  p1amount, null);
+                      if(tmpName==username||name==username)
+                      {
+                        User user=userRepository.findById(username).get();
+                          //friendCircleService.addSingleFriendCircleForUserByIds("Rahul123","Rohan123");
 
+                      }
                         break;
                     }
 
                 }
             }
-
         }
+        return str;
     }
 
-    public String addcontribution(Integer bill, Integer num, Character choice, List<Pair> pairList) {
+    public String addcontribution(String username,Integer bill, Integer num, Character choice, List<Pair> pairList) {
 
         int total_contribution = 0;
         int share = bill / num;
-
+        String str="";
         if (choice == 'E') {
         for (int i = 0; i < num; i++) total_contribution += pairList.get(i).getContribution();
 
@@ -289,19 +299,17 @@ public class FriendCircleService {
             throw new DataInConsistency("check entered data");
 
 
-
-            HashMap<String, Double> ComputedMap = new HashMap<>();
+            HashMap<String, Integer> ComputedMap = new HashMap<>();
             for (int i = 0; i < num; i++) {
-                String username = pairList.get(i).getUsername();
+                String name = pairList.get(i).getUsername();
                 int contribution = pairList.get(i).getContribution();
-                ComputedMap.put(username, (double) contribution - share);
+                    ComputedMap.put(name,  contribution - share);
             }
-            compute(ComputedMap);
+            compute(username,ComputedMap);
             for (String name : ComputedMap.keySet()) {
                 if (ComputedMap.get(name) != 0) {
-                    compute(ComputedMap);
+                  str=  compute(username,ComputedMap);
                 }
-
 
             }
 
@@ -312,22 +320,21 @@ public class FriendCircleService {
             if (total_contribution != 100)
                 throw new DataInConsistency("check entered data");
 
-            HashMap<String, Double> ComputedMap = new HashMap<>();
+            HashMap<String, Integer> ComputedMap = new HashMap<>();
             for (int i = 0; i < num; i++) {
-                String username = pairList.get(i).getUsername();
+                String name = pairList.get(i).getUsername();
                 int percent_contribution = pairList.get(i).getContribution();
                 int contribution = (percent_contribution*(bill))/100;
-                ComputedMap.put(username, (double) contribution - share);
-
+                ComputedMap.put(name, (Integer) contribution - share);
             }
-            compute(ComputedMap);
+           str= compute(username,ComputedMap);
             for (String name : ComputedMap.keySet()) {
                 if (ComputedMap.get(name) != 0) {
-                    compute(ComputedMap);
+                   str= compute(username,ComputedMap);
                 }
             }
         }
-        return "success";
+        return str;
     }
     
     
