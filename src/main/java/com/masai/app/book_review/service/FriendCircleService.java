@@ -234,7 +234,7 @@ public class FriendCircleService {
                 found = true;
                 ++j;
                 //replace below with StringBuilder class
-                msg += j + " )   " + friendCircle.getFromFriendId() + " has to give Rs. " + friendCircle.getAmount() + " to " + friendCircle.getUser().getPublicName() + " ( userName = " + friendCircle.getUser().getUserNameId() + " )   ";
+                msg += j + " ) " + friendCircle.getFromFriendId() + " has to give Rs. " + friendCircle.getAmount() + " to " + friendCircle.getUser().getPublicName() + " ( userName = " + friendCircle.getUser().getUserNameId() + " ) \n";
             }
         }
 
