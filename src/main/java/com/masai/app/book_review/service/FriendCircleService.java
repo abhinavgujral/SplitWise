@@ -276,16 +276,12 @@ public class FriendCircleService {
                             FriendCircle friendCircle = new FriendCircle(++friendCircleId, tmpName, name, true, true, p1amount, user);
                         }
                         FriendCircle friendCircle = new FriendCircle(++friendCircleId, tmpName, name, true, true, p1amount, null);
-
-
-
                       }
                         break;
                     }
 
                 }
             }
-        
         return str;
     }
 
