@@ -285,7 +285,7 @@ public class FriendCircleService {
 
                 }
             }
-        }
+        
         return str;
     }
 
