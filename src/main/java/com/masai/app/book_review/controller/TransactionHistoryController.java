@@ -21,8 +21,8 @@ public class TransactionHistoryController
         return transactionHistory;
     }
 
-    @GetMapping("/history/getfullhistory")
-    public String getFullTransactionHistoryByUserId(String userNameId)
+    @GetMapping("/history/getfullhistory/{user}")
+    public String getFullTransactionHistoryByUserId(@PathVariable("user") String userNameId)
     {
         String entireHistory = transactionHistoryService.getFullTransactionHistoryByUserId(userNameId);
         return entireHistory;

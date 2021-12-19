@@ -2,6 +2,7 @@ package com.masai.app.book_review.controller;
 
 import com.masai.app.book_review.DTO.FriendDTO;
 import com.masai.app.book_review.DTO.Pair;
+import com.masai.app.book_review.entity.FriendCircle;
 import com.masai.app.book_review.service.FriendCircleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -44,10 +45,10 @@ public class FriendCircleController
         return msg;
     }
     //Divide share
-    @PostMapping("/bill/{bill}/friends/{num}/divide/{choice}")
-    public String addcontribution(@PathVariable("bill") Integer bill, @PathVariable("num") Integer num, @PathVariable("choice") Character choice, @RequestBody List<Pair> pairArray){
+    @PostMapping("user/{username}/bill/{bill}/friends/{num}/divide/{choice}")
+    public String addcontribution(@PathVariable("username") String username, @PathVariable("bill") Integer bill, @PathVariable("num") Integer num, @PathVariable("choice") Character choice, @RequestBody List<Pair> pairArray){
            //return " success";
-        return friendCircleService.addcontribution(bill,num,choice,pairArray);
+        return friendCircleService.addcontribution(username,bill,num,choice,pairArray);
     }
 
 
@@ -61,12 +62,19 @@ public class FriendCircleController
         return msg;
     }
 
- /*   @PutMapping("/friendservice/friends/getpayees/{fcId}")  //new method3
+   @PutMapping("/friendservice/friends/getpayees/{fcId}")  //new method3
     public String getListOfPayees(@PathVariable("fcId") String friendId)
     {
         String msg = friendCircleService.getListOfPayees(friendId);
         return msg;
-    }    */
+    }
+
+    @PutMapping("/friendservice/friends/getpayors/{fcId}")  //new method3
+    public List<FriendCircle> getListOfPayors(@PathVariable("fcId") String friendId)
+    {
+        List<FriendCircle> msg = friendCircleService.getListOfPayors(friendId);
+        return msg;
+    }
 
   /*  @PutMapping("friendservice/friends/id")
     public String updateFriendCircle(@RequestBody FriendCircle friendCircle)

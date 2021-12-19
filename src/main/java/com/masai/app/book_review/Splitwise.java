@@ -12,11 +12,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @SpringBootApplication
-public class BookReviewApplication implements CommandLineRunner
+public class Splitwise implements CommandLineRunner
 {
 	@Autowired
 	UserService userService;
@@ -34,7 +33,7 @@ public class BookReviewApplication implements CommandLineRunner
 	TransactionHistoryService transactionHistoryService;
 
 	public static void main(String[] args) {
-		SpringApplication.run(BookReviewApplication.class, args);
+		SpringApplication.run(Splitwise.class, args);
 	}
 
 	@Override
@@ -62,7 +61,7 @@ public class BookReviewApplication implements CommandLineRunner
 		friendCircleService.addSingleFriendCircleForUserByIds("Bagul123","Rahul123");
 
 		System.out.println();
-		friendCircleService.test();
+	//	friendCircleService.test();
 
 		String msg11 = friendCircleService.modifyFriendCircleByUserId("Bagul123","Rahul123", 30);
 		System.out.println("T11 => "+msg11);
@@ -92,7 +91,7 @@ public class BookReviewApplication implements CommandLineRunner
 		System.out.println(betweenHistory2);
 
 		System.out.println();
-		friendCircleService.test();
+	//	friendCircleService.test();
 
 		System.out.println();
 		System.out.println(" ==> List of Payees for Rohan123 ");
@@ -104,12 +103,7 @@ public class BookReviewApplication implements CommandLineRunner
 		List<FriendCircle> listPayors= friendCircleService.getListOfPayors("Rahul123");
 		System.out.println(listPayors);
 
-//		String addcontribution = friendCircleService.addcontribution(100, 5, 'E', { new Pair("A",
-//				60), new Pair("B", 20), new Pair("C", 15), new Pair("D", 5),
-//				new Pair("E", 0) });
-//	      System.out.println(addcontribution);
 
-		//System.out.println(" pair array=>"+ new PairArray().getPairList());
 
 
 
