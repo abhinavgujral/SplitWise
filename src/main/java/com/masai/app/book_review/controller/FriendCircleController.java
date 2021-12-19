@@ -62,18 +62,18 @@ public class FriendCircleController
         return msg;
     }
 
-   @PutMapping("/friendservice/friends/getpayees/{fcId}")  //new method3
+    @GetMapping("/friendservice/payees/friends/getpayees/{fcId}")  //new method3
     public String getListOfPayees(@PathVariable("fcId") String friendId)
     {
         String msg = friendCircleService.getListOfPayees(friendId);
         return msg;
     }
 
-    @PutMapping("/friendservice/friends/getpayors/{fcId}")  //new method3
+    @GetMapping("/friendservice/payors/friends/getpayors/{fcId}")  //new method3
     public List<FriendCircle> getListOfPayors(@PathVariable("fcId") String friendId)
     {
-        List<FriendCircle> msg = friendCircleService.getListOfPayors(friendId);
-        return msg;
+        List<FriendCircle> friendList = friendCircleService.getListOfPayors(friendId);
+        return friendList;
     }
 
   /*  @PutMapping("friendservice/friends/id")
