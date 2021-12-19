@@ -39,6 +39,8 @@ public class Splitwise implements CommandLineRunner
 	@Override
 	public void run(String... args) throws Exception
 	{
+	
+
 		User user1 = new User("Rahul123", "Rahul", "Rahul@xyz.com", "Pass@1234", null);
 		User user2 = new User("Bagul123", "Bagul", "Rahul@xyz.com", "Pass@1234", null);
 
@@ -47,24 +49,35 @@ public class Splitwise implements CommandLineRunner
 		FriendCircle friendCircle2 = new FriendCircle(null, "Rohan123", "Bagul123", true, true, 200, null);
 		FriendCircle friendCircle4 = new FriendCircle(null, "Rahul123", "Bagul123", true, true, 5000, null);
 
-		userRepository.save(user1);
-		userRepository.save(user2);
+		userService.addUser(user1);
+		userService.addUser(user2);
 
-		friendCircleRepository.save(friendCircle1);
-		friendCircleRepository.save(friendCircle2);
-		friendCircleRepository.save(friendCircle3);
-		friendCircleRepository.save(friendCircle4);
+		friendCircleService.addFriendCircle(friendCircle1);
+		friendCircleService.addFriendCircle(friendCircle2);
+		friendCircleService.addFriendCircle(friendCircle3);
+		friendCircleService.addFriendCircle(friendCircle4);
 
-		friendCircleService.addSingleFriendCircleForUserByIds("Rahul123","Rohan123");
-		friendCircleService.addSingleFriendCircleForUserByIds("Rahul123","Rohit123");
-		friendCircleService.addSingleFriendCircleForUserByIds("Bagul123","Rohan123");
-		friendCircleService.addSingleFriendCircleForUserByIds("Bagul123","Rahul123");
+
+//		userRepository.save(user1);
+//		userRepository.save(user2);
+//
+//		friendCircleRepository.save(friendCircle1);
+//		friendCircleRepository.save(friendCircle2);
+//		friendCircleRepository.save(friendCircle3);
+//		friendCircleRepository.save(friendCircle4);
+//
+//		friendCircleService.addSingleFriendCircleForUserByIds("Rahul123","Rohan123");
+//		friendCircleService.addSingleFriendCircleForUserByIds("Rahul123","Rohit123");
+//		friendCircleService.addSingleFriendCircleForUserByIds("Bagul123","Rohan123");
+//		friendCircleService.addSingleFriendCircleForUserByIds("Bagul123","Rahul123");
 
 		System.out.println();
-	//	friendCircleService.test();
+//		friendCircleService.test();
 
 		String msg11 = friendCircleService.modifyFriendCircleByUserId("Bagul123","Rahul123", 30);
-		System.out.println("T11 => "+msg11);
+		System.out.println("T12 => "+msg11);
+		String msg12 = friendCircleService.modifyFriendCircleByUserId("Bagul123","Rahul123", 15);
+		System.out.println("T12 => "+msg12);
 		String msg1 = friendCircleService.modifyFriendCircleByUserId("Rahul123","Rohan123", 30);
 		System.out.println("T1 => "+msg1);
 		String msg2 = friendCircleService.modifyFriendCircleByUserId("Rahul123","Rohan123", 20);
@@ -90,8 +103,7 @@ public class Splitwise implements CommandLineRunner
 		String betweenHistory2 = transactionHistoryService.getTransactionHistoryAmongTwoUsers("Rahul123", "Bagul123");
 		System.out.println(betweenHistory2);
 
-		System.out.println();
-	//	friendCircleService.test();
+//		friendCircleService.test();
 
 		System.out.println();
 		System.out.println(" ==> List of Payees for Rohan123 ");
@@ -100,8 +112,17 @@ public class Splitwise implements CommandLineRunner
 
 		System.out.println();
 		System.out.println(" ==> List of Payors for Rahul123");
-		List<FriendCircle> listPayors= friendCircleService.getListOfPayors("Rahul123");
+		List<FriendCircle> listPayors = friendCircleService.getListOfPayors("Rahul123");
+		System.out.println("==> From CommandlineRunner ");
 		System.out.println(listPayors);
+
+//		String addcontribution = friendCircleService.addcontribution(100, 5, 'E', { new Pair("A",
+//				60), new Pair("B", 20), new Pair("C", 15), new Pair("D", 5),
+//				new Pair("E", 0) });
+//	      System.out.println(addcontribution);
+
+		//System.out.println(" pair array=>"+ new PairArray().getPairList());
+
 
 
 
