@@ -287,11 +287,13 @@ public class FriendCircleService {
                         str += tmpName + "=>" + p1amount + "=>" + name + "\n ";
                         //tmpName = giver
                         //name = taker
-                        FriendCircle friendCircle = new FriendCircle(++friendCircleId, tmpName, name, true, true,  p1amount, null);
-                      if(tmpName==username||name==username)
-                      {
-                        User user=userRepository.findById(username).get();
-                          //friendCircleService.addSingleFriendCircleForUserByIds("Rahul123","Rohan123");
+                        if(tmpName==username||name==username) {
+                            User user=userRepository.findById(username).get();
+                            FriendCircle friendCircle = new FriendCircle(++friendCircleId, tmpName, name, true, true, p1amount, user);
+                        }
+                        FriendCircle friendCircle = new FriendCircle(++friendCircleId, tmpName, name, true, true, p1amount, null);
+
+
 
                       }
                         break;
@@ -299,7 +301,7 @@ public class FriendCircleService {
 
                 }
             }
-        }
+        
         return str;
     }
 
