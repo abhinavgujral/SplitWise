@@ -31,10 +31,10 @@ public class FriendCircleController
 
 
     @PostMapping("/friendservice/friends")
-    public FriendDTO addFriendCircle(@RequestBody FriendDTO fromFriendId)
+    public FriendCircle addFriendCircle(@RequestBody FriendDTO fromFriendId)
     {
-        FriendDTO fromFriendId1 = friendCircleService.addFriendCircle(fromFriendId);
-        return fromFriendId1;
+        FriendCircle friendCirclei = friendCircleService.addFriendCircle(fromFriendId);
+        return friendCirclei;
     }
 
     @PostMapping("/friendservice/friends/{userId}/{fcId}")  //new method1

@@ -59,13 +59,29 @@ public class FriendCircleService {
     }  */
 
 
-    public FriendDTO addFriendCircle(FriendDTO fromFrienddto) {
+    // abhinav below one function
+ /*   public FriendDTO addFriendCircle(FriendDTO fromFrienddto) {
         FriendCircle fromFriend = new FriendCircle();
         modelMapper.modelMapper().map(fromFrienddto, fromFriend);
         FriendCircle friendCircle = friendCircleRepository.save(fromFriend);
         modelMapper.modelMapper().map(friendCircle, fromFrienddto);
 
         return fromFrienddto;
+    }   */
+    
+    @Transactional
+    public FriendCircle addFriendCircle(FriendCircle fromFriend)
+    {
+        FriendCircle friendCircle = friendCircleRepository.save(fromFriend);
+
+    //    System.out.println("Taker is "+ friendCircle.getToFriend());
+    //    System.out.println("Giver is "+ friendCircle.getFromFriendId());
+
+
+        if(userRepository.findById(friendCircle.getToFriend()).isPresent())
+            addSingleFriendCircleForUserByIds(fromFriend.getToFriend(), fromFriend.getFromFriendId());
+
+        return friendCircle;
     }
 
 
@@ -218,7 +234,7 @@ public class FriendCircleService {
                 found = true;
                 ++j;
                 //replace below with StringBuilder class
-                msg += j + " )   " + friendCircle.getFromFriendId() + " has to give Rs. " + friendCircle.getAmount() + " to " + friendCircle.getUser().getPublicName() + " ( userName = " + friendCircle.getUser().getUserNameId() + " )   ";
+                msg += j + " ) " + friendCircle.getFromFriendId() + " has to give Rs. " + friendCircle.getAmount() + " to " + friendCircle.getUser().getPublicName() + " ( userName = " + friendCircle.getUser().getUserNameId() + " ) \n";
             }
         }
 
