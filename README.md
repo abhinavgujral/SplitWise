@@ -4,7 +4,20 @@ Splitwise is a tool for friends and roommates to track bills and other shared ex
 
 We have built the backend for SplitWise Application using Spring Boot in Java.
 
-Major Features:
+### Technology Used
+Spring Boot (Java).
+
+### Project Group Members
+1) Nikhil Rane
+
+2) Abhinav Gujral
+
+3) Shubham Shegokar
+
+### Video of Working Demo :
+https://drive.google.com/file/d/1XdAN7cV6lVzJJeXaiWB56z3oBdcDXLsy/view
+
+### Major Features:
 
 1) API to create account of a user and to let him add his friends.
 
@@ -19,4 +32,6 @@ Major Features:
 5) API to retrieve entire transaction history details of 1 user (grouped as money sent and/or money recieved) with all other users along with date and time of the transactions.
 
 6) API to retrieve entire transaction history details between any 2 particular users with date and time.
+
+Thanks for visiting.
 
